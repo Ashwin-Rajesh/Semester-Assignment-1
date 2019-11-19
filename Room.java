@@ -1,63 +1,68 @@
-public class Room
+import java.util.*;
+public class Room extends RoomType
 {
-	int NumberOfRooms;
-	double MRate;
-	double TuRate;
-	double WRate;
-	double ThRate;
-	double FRate;
-	double SaRate;
-	double SuRate;
-	int MinAdult;
-	int MinChild;
-	int MaxAdult;
-	int MaxChild;
-	
-	
-	public Room(int NumberOfRooms, char type)
-	{
-		this.NumberOfRooms = NumberOfRooms;
-	}
-	
-	/* Set the rates for each day, there is more than likely a better solution, but this will do for now*/
-	public SetMRate(double Rate)
-	{
-		MRate = Rate;
-	}
-	public SetTuRate(double Rate)
-	{
-		TuRate = Rate;
-	}
-	public SetWRate(double Rate)
-	{
-		WRate = Rate;
-	}
-	public SetThRate(double Rate)
-	{
-		ThRate = Rate;
-	}
-	public SetFRate(double Rate)
-	{
-		FRate = Rate;
-	}
-	public SetSaRate(double Rate)
-	{
-		SaRate = Rate;
-	}
-	public SetSuRate(double Rate)
-	{
-		SuRate = Rate;
-	}
-	
-	/* Setting the amount of occupants, again, probably a better solution out there, but this will do for now */
-	public SetMinOccupants(MinAdult, MinChild)
-	{
-		this.MinAdult = MinAdult;
-		this.MinChild = MinChild;
-	}
-	public SetMaxOccupants(MaxAdult, MaxChild)
-	{
-		this.MaxAdult = MaxAdult;
-		this.MaxChild = MaxChild;
-	}
+    private String roomID;
+    private boolean breakfast;
+    private String status;
+    public Room()
+    {
+        
+    }
+    public String getRoomID()
+    {
+        return roomID;
+    }
+    public String getStatus()
+    {
+        return status;
+    }
+    public void setStatus(String s)
+    {
+        status=s;
+    }
+    public String getRoomType(String id)
+    {
+        String s="";
+        if("DD".equals(id.substring(0,2)))
+        {
+            s="Deluxe Double";
+        }
+        if("DT".equals(id.substring(0,2)))
+        {
+            s="Deluxe Twin";
+        }
+        if("DS".equals(id.substring(0,2)))
+        {
+            s="Deluxe Single";
+        }
+        if("DF".equals(id.substring(0,2)))
+        {
+            s="Deluxe Family";
+        }
+        if("ED".equals(id.substring(0,2)))
+        {
+            s="Executive Double";
+        }
+        if("ET".equals(id.substring(0,2)))
+        {
+            s="Executive Twin";
+        }
+        if("ES".equals(id.substring(0,2)))
+        {
+            s="Executive Single";
+        }
+        if("CD".equals(id.substring(0,2)))
+        {
+            s="Classic Double";
+        }
+        if("CT".equals(id.substring(0,2)))
+        {
+            s="Classic Twin";
+        }
+        if("CS".equals(id.substring(0,2)))
+        {
+            s="Classic Single";
+        }
+        return s;
+    }
 }
