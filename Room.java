@@ -1,12 +1,13 @@
 import java.util.*;
-public class Room extends RoomType
+public class Room
 {
     private String roomID;
     private boolean breakfast;
     private String status;
+    
     public Room()
     {
-        
+        status = "AVAILABLE";
     }
     public String getRoomID()
     {
@@ -16,9 +17,21 @@ public class Room extends RoomType
     {
         return status;
     }
+    public boolean getBreakfast()
+    {
+        return breakfast;
+    }
+    public void setRoomID(String roomType, int roomNumber)
+    {
+        roomID = roomType+roomNumber;
+    }
     public void setStatus(String s)
     {
-        status=s;
+        status = s;
+    }
+    public void setBreakfast(boolean flag)
+    {
+        breakfast = flag;
     }
     public String getRoomType(String id)
     {
