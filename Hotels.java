@@ -4,34 +4,34 @@ public class Hotels
 {
     String hotelName;
     int starRating;//3*,4*,5*
-    private ArrayList<Room> roomList;//list of ?
-    private RoomType[] roomArray;//array of objects of RoomType
+    private ArrayList<Room> listOfRooms;//list of rooms
+    private ArrayList<RoomType> listOfTypes;//array of objects of RoomType
     /* you will need  to go through the array of room lists */
     /* get rates */
-    public Hotels(RoomType[] types, String hotelName, int starRating)
+    public Hotels(ArrayList<RoomType> types, String hotelName, int starRating)
     {
         this.hotelName = hotelName;
         this.starRating = starRating;
-        roomList = new ArrayList<Room>(rooms);
-        roomArray = types;
+        listOfRooms = new ArrayList<Room>(rooms);
+        listOfTypes = types;
         for(RoomType r : types)
         {
-            Room[] rooms = r.getRooms();
+            ArrayList<Room> rooms = r.getRooms();
             for(Room rm : rooms)
             {
-                roomList.add(rm);
+                listOfRooms.add(rm);
             }
         }
     }
-    public RoomType[] GetStatus()
+    public ArrayList<RoomType> getStatus()
     {
-        return roomArray;
+        return listOfTypes;
     }
-    public void book(String room_id)
+    public void book(String roomId)
     {
-        for(Room r1 : roomList)
+        for(Room r1 : listOfRooms)
         {
-            if(room_id==r1.getRoomID())
+            if(roomId == r1.getRoomID())
             {
                 r1.setStatus("NOT AVAILABLE");
             }
