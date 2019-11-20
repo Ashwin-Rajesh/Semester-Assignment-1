@@ -3,17 +3,16 @@ public class Room
 {
     private String roomID;
     private boolean breakfast;
-    private String status;
-    
+    private boolean status;
     public Room()
     {
-        status = "AVAILABLE";
+        status = true;
     }
     public String getRoomID()
     {
         return roomID;
     }
-    public String getStatus()
+    public boolean getStatus()
     {
         return status;
     }
@@ -25,9 +24,9 @@ public class Room
     {
         roomID = roomType+roomNumber;
     }
-    public void setStatus(String s)
+    public void setStatus(boolean flag)
     {
-        status = s;
+        status = flag;
     }
     public void setBreakfast(boolean flag)
     {
