@@ -39,10 +39,12 @@ public class RoomType
     }
     public ArrayList<Room> getRooms()
     {
+        int j=1;
         ArrayList<Room> totalNumber = new ArrayList<Room>(numberOfRooms);
         for(Room i : totalNumber)
         {
-           //totalNumber[i] = i+1;
+            while(j<=numberOfRooms)
+            i.setRoomID(roomType, j);
         }
         return totalNumber;
         // Generate numberOfRooms by passing this as argument to constructor, return them
