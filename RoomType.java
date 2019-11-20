@@ -2,21 +2,31 @@ import java.util.*;
 import java.time.LocalDate;
 public class RoomType
 {
-    private String Name;
+    private String roomType;
     private int numberOfRooms;          // Total number of rooms of this type in hotel
-    private int availableRooms;          // Number of occupied rooms of the type in the hotel
+    private int availableRooms;          // Number of available rooms of the type in the hotel
     private int minOccupancy;
     private int maxOccupancy;
     private double[] rate;
-    public RoomType()
+    public RoomType(String roomType, int numberOfRooms, int minOccupancy, int maxOccupancy, double[] price)
     {   
+        this.roomType = roomType;
+        this.numberOfRooms = numberOfRooms;
+        availableRooms = numberOfRooms;
+        this.minOccupancy = minOccupancy;
+        this.maxOccupancy = maxOccupancy;
+        for(int i=0;i<price.length;i++)
+        {
+            rate[i] = price[i];
+        }
         // Give values to all data fields.
     }  
-    public double getrate(LocalDate date, int num)// Gets rate of stay from checkin date, number of days stayed.
+    public double getRate(LocalDate date, int num)
     {
+        // Gets rate of stay from checkin date, number of days stayed.
         double d = 0;
         int day = date.getDayOfMonth();
-        int i=0;
+        int i = 0;
         while(i < num)
         {
             if(day%7 == 0)
@@ -27,12 +37,12 @@ public class RoomType
         }
         return d;// Compute date from double[] rate.
     }
-    public Room[] getrooms()
+    public ArrayList<Room> getRooms()
     {
-        Room[] totalNumber = new Room[numberOfRooms];
-        for(int i=0;i<numberOfRooms;i++)
+        ArrayList<Room> totalNumber = new ArrayList<Room>(numberOfRooms);
+        for(Room i : totalNumber)
         {
-            totalNumber[i] = i+1;
+           //totalNumber[i] = i+1;
         }
         return totalNumber;
         // Generate numberOfRooms by passing this as argument to constructor, return them
@@ -41,11 +51,12 @@ public class RoomType
     {
         return numberOfRooms;
     }
-    public int getOccupied()
+    public int getAvailable()
     {
         return availableRooms;
     }
-    public void set()
+    public void setAvailable(int count)
     {
+        this.availableRooms = count;
     }
 }
