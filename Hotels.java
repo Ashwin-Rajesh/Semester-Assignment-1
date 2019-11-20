@@ -27,6 +27,10 @@ public class Hotels
     {
         return listOfTypes;
     }
+    public ArrayList<Room> getListOfRooms()
+    {
+        return listOfRooms;
+    }
     public void book(String roomId)
     {
         for(Room r1 : listOfRooms)
