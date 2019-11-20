@@ -1,6 +1,6 @@
 import java.util.*;
 import java.time.LocalDate;
-public class RoomType
+public class RoomType 
 {
     private String roomType;
     private int numberOfRooms;          // Total number of rooms of this type in hotel
@@ -20,7 +20,7 @@ public class RoomType
             rate[i] = price[i];
         }
         // Give values to all data fields.
-    }  
+    }
     public double getRate(LocalDate date, int num)
     {
         // Gets rate of stay from checkin date, number of days stayed.
@@ -49,7 +49,7 @@ public class RoomType
         return totalNumber;
         // Generate numberOfRooms by passing this as argument to constructor, return them
     } 
-    public int getTotal()
+    public int getNumberOfRooms()
     {
         return numberOfRooms;
     }
