@@ -12,7 +12,7 @@ public class Hotels
     {
         this.hotelName = hotelName;
         this.starRating = starRating;
-        listOfRooms = new ArrayList<Room>(rooms);
+        listOfRooms = new ArrayList<Room>();
         listOfTypes = types;
         for(RoomType r : types)
         {
@@ -33,7 +33,7 @@ public class Hotels
         {
             if(roomId == r1.getRoomID())
             {
-                r1.setStatus("NOT AVAILABLE");
+                r1.setStatus(false);
             }
         }
     }   
