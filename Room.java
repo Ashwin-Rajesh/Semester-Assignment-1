@@ -1,7 +1,7 @@
 import java.util.*;
-public class Room
+public class Room extends RoomType
 {
-    private String roomID;
+    private String roomID; 
     private boolean breakfast;
     private boolean status;
     public Room()
@@ -22,7 +22,7 @@ public class Room
     }
     public void setRoomID(String roomType, int roomNumber)
     {
-        roomID = roomType+roomNumber;
+        roomID = roomType+":"+roomNumber;
     }
     public void setStatus(boolean flag)
     {
@@ -34,7 +34,7 @@ public class Room
     }
     public String getRoomType(String id)
     {
-        String s="";
+        String s="Wrong ID";
         if("DD".equals(id.substring(0,2)))
         {
             s="Deluxe Double";
