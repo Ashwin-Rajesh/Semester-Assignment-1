@@ -6,21 +6,23 @@ public class RoomType
     private String roomType;
     private String typeID;
     private int numberOfRooms;          // Total number of rooms of this type in hotel
-    private int availableRooms;          // Number of available rooms of the type in the hotel
-    private int minOccupancy;
-    private int maxOccupancy;
-    private HashMap<String,Integer> rate;//keys=days,values=rates              //start of the week : monday
-    public RoomType(String roomType, int numberOfRooms, int minOccupancy, int maxOccupancy, HashMap<String,Integer> price)
+    private int availableRooms;         // Number of available rooms of the type in the hotel
+    private int[] minOccupancy;
+    private int[] maxOccupancy;
+    private double[] rate;             //start of the week : monday
+    public RoomType(String roomType, int numberOfRooms, int[] minOccupancy, int[] maxOccupancy, double[] rate)
     {   
         this.roomType = roomType;
         this.numberOfRooms = numberOfRooms;
         availableRooms = numberOfRooms;
-        this.minOccupancy = minOccupancy;
-        this.maxOccupancy = maxOccupancy;
-        rate = new HashMap<String,Integer>();
-        for(String i : price.keySet())
+        for(int i=0;i<rate.length;i++)
         {
-            rate.put(i,price.get(i));
+            if(i<2)
+            {
+                this.minOccupancy[i] = minOccupancy[i];
+                this.maxOccupancy[i] = maxOccupancy[i];
+            }
+            this.rate[i] = rate[i];
         }
         // Give values to all data fields.
     }
@@ -28,18 +30,15 @@ public class RoomType
     {
         // Gets rate of stay from checkin date, number of days stayed.
         double total = 0;
-        String x = "" + date.getDayOfWeek();
-        for(String s : rate.keySet())//iterates through keys ie. days of week
+        int index = date.getDayOfWeek().getValue()-1;
+        for(int j=index;j<rate.length;j++)
         {
-            if(s.equalsIgnoreCase(x))//finds the day of the week
+            total = total + rate[j];
+            if(index==6)
             {
-                for(int i=0;i<num;i++)//
-                {
-                    total = total + rate.get(s+i);
-                }     
-                break;
+                index=0;
             }
-        }
+        }     
         return total;// Compute date from double[] rate.
     }
     public ArrayList<Room> getRooms()
@@ -69,11 +68,11 @@ public class RoomType
     {
         return roomType;
     }
-    public int getMinOccupancy()
+    public int[] getMinOccupancy()
     {
         return minOccupancy;
     }
-    public int getMaxOccupancy()
+    public int[] getMaxOccupancy()
     {
         return maxOccupancy;
     }
