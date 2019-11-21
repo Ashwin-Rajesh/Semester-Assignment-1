@@ -9,36 +9,27 @@ public class RoomType
     private int availableRooms;          // Number of available rooms of the type in the hotel
     private int minOccupancy;
     private int maxOccupancy;
-    private HashMap<String,Integer> rate;//keys=days,values=rates              //start of the week : monday
-    public RoomType(String roomType, int numberOfRooms, int minOccupancy, int maxOccupancy, HashMap<String,Integer> price)
+    private double[] rate;//keys=days,values=rates              //start of the week : monday
+    public RoomType(String roomType, int numberOfRooms, int minOccupancy, int maxOccupancy, double[] price)
     {   
         this.roomType = roomType;
         this.numberOfRooms = numberOfRooms;
         availableRooms = numberOfRooms;
         this.minOccupancy = minOccupancy;
         this.maxOccupancy = maxOccupancy;
-        rate = new HashMap<String,Integer>();
-        for(String i : price.keySet())
-        {
-            rate.put(i,price.get(i));
-        }
+        rate = price.clone();
         // Give values to all data fields.
     }
     public double getRate(LocalDate date, int num)
     {
         // Gets rate of stay from checkin date, number of days stayed.
         double total = 0;
-        String x = "" + date.getDayOfWeek();
-        for(String s : rate.keySet())//iterates through keys ie. days of week
+        int day = date.getDayOfWeek().getValue() - 1;
+        for(int i = 0; i < num; i++)
         {
-            if(s.equalsIgnoreCase(x))//finds the day of the week
-            {
-                for(int i=0;i<num;i++)//
-                {
-                    total = total + rate.get(s+i);
-                }     
-                break;
-            }
+            total += rate[day];
+            day++;
+            if(day == 7)    day = 0;
         }
         return total;// Compute date from double[] rate.
     }
