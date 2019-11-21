@@ -9,7 +9,7 @@ public class Room
     {
         status = true;
         this.type = rt;
-        this.roomID = setRoomID(typeID, roomNumber);
+        setRoomID(typeID, roomNumber);
     }
     public String getRoomID()
     {
@@ -27,7 +27,7 @@ public class Room
     {
         return type;
     }
-    public String setRoomID(String typeID, int roomNumber)
+    public void setRoomID(String typeID, int roomNumber)
     {
         if(roomNumber<10)
         {
@@ -41,7 +41,6 @@ public class Room
         {
             roomID = typeID + ":0" + roomNumber;
         }
-        return roomID;
     }
     public void setStatus(boolean flag)
     {
