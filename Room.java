@@ -4,9 +4,14 @@ public class Room extends RoomType
     private String roomID; 
     private boolean breakfast;
     private boolean status;
-    public Room()
+    provate RoomType type;
+
+    public Room(RoomType rt,String Id)
     {
+        this.type = rt;
         status = true;
+        beakfast = false;
+        this.roomId = Id;
     }
     public String getRoomID()
     {
