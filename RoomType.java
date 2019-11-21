@@ -3,6 +3,7 @@ import java.time.LocalDate;
 public class RoomType 
 {
     private String roomType;
+    private String typeId;
     private int numberOfRooms;          // Total number of rooms of this type in hotel
     private int availableRooms;          // Number of available rooms of the type in the hotel
     private int minOccupancy;
@@ -41,10 +42,10 @@ public class RoomType
     {
         int j=1;
         ArrayList<Room> totalNumber = new ArrayList<Room>(numberOfRooms);
-        for(Room i : totalNumber)
+        for(int i = 0; i< numberofRoom;i++)
         {
-            while(j<=numberOfRooms)
-            i.setRoomID(roomType, j);
+            String roomId = typeId + i.toString();
+            totalNumber.add(new Room(this,roomId));
         }
         return totalNumber;
         // Generate numberOfRooms by passing this as argument to constructor, return them
