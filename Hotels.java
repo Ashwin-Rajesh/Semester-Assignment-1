@@ -23,7 +23,7 @@ public class Hotels
             }
         }
     }
-    public ArrayList<RoomType> getStatus()
+    public ArrayList<RoomType> getListOfTypes()
     {
         return listOfTypes;
     }
