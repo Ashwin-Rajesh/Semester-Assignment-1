@@ -1,17 +1,16 @@
 import java.util.*;
-public class Room extends RoomType
+public class Room
 {
     private String roomID; 
     private boolean breakfast;
     private boolean status;
-    provate RoomType type;
+    private RoomType type;
 
     public Room(RoomType rt,String Id)
     {
         this.type = rt;
         status = true;
-        beakfast = false;
-        this.roomId = Id;
+        this.roomId = setRoomID(rt.getRoomType(), roomNumber);
     }
     public String getRoomID()
     {
