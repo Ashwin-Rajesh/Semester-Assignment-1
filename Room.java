@@ -5,12 +5,11 @@ public class Room
     private boolean breakfast;
     private boolean status;
     private RoomType type;
-
-    public Room(RoomType rt,String Id)
+    public Room(RoomType rt, String typeID, int roomNumber)
     {
-        this.type = rt;
         status = true;
-        this.roomId = setRoomID(rt.getRoomType(), roomNumber);
+        this.type = rt;
+        this.roomID = setRoomID(typeID, roomNumber);
     }
     public String getRoomID()
     {
@@ -24,9 +23,21 @@ public class Room
     {
         return breakfast;
     }
-    public void setRoomID(String roomType, int roomNumber)
+    public String setRoomID(String typeID, int roomNumber)
     {
-        roomID = roomType+":"+roomNumber;
+        if(roomNumber<10)
+        {
+            roomID = typeID + ":000" + roomNumber;
+        }
+        else if(roomNumber>10 && roomNumber<100)
+        {
+            roomID = typeID + ":00" + roomNumber;
+        }
+        else
+        {
+            roomID = typeID + ":0" + roomNumber;
+        }
+        return roomID;
     }
     public void setStatus(boolean flag)
     {
@@ -35,50 +46,5 @@ public class Room
     public void setBreakfast(boolean flag)
     {
         breakfast = flag;
-    }
-    public String getRoomType(String id)
-    {
-        String s="Wrong ID";
-        if("DD".equals(id.substring(0,2)))
-        {
-            s="Deluxe Double";
-        }
-        if("DT".equals(id.substring(0,2)))
-        {
-            s="Deluxe Twin";
-        }
-        if("DS".equals(id.substring(0,2)))
-        {
-            s="Deluxe Single";
-        }
-        if("DF".equals(id.substring(0,2)))
-        {
-            s="Deluxe Family";
-        }
-        if("ED".equals(id.substring(0,2)))
-        {
-            s="Executive Double";
-        }
-        if("ET".equals(id.substring(0,2)))
-        {
-            s="Executive Twin";
-        }
-        if("ES".equals(id.substring(0,2)))
-        {
-            s="Executive Single";
-        }
-        if("CD".equals(id.substring(0,2)))
-        {
-            s="Classic Double";
-        }
-        if("CT".equals(id.substring(0,2)))
-        {
-            s="Classic Twin";
-        }
-        if("CS".equals(id.substring(0,2)))
-        {
-            s="Classic Single";
-        }
-        return s;
     }
 }
