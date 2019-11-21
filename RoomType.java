@@ -1,5 +1,6 @@
 import java.util.*;
 import java.time.LocalDate;
+import java.time.DayOfWeek;
 public class RoomType 
 {
     private String roomType;
@@ -8,35 +9,38 @@ public class RoomType
     private int availableRooms;          // Number of available rooms of the type in the hotel
     private int minOccupancy;
     private int maxOccupancy;
-    private double[] rate;              //start of the week : monday
-    public RoomType(String roomType, int numberOfRooms, int minOccupancy, int maxOccupancy, double[] price)
+    private HashMap<String,Integer> rate;//keys=days,values=rates              //start of the week : monday
+    public RoomType(String roomType, int numberOfRooms, int minOccupancy, int maxOccupancy, HashMap<String,Integer> price)
     {   
         this.roomType = roomType;
         this.numberOfRooms = numberOfRooms;
         availableRooms = numberOfRooms;
         this.minOccupancy = minOccupancy;
         this.maxOccupancy = maxOccupancy;
-        for(int i = 0; i <price.length; i++)
+        rate = new HashMap<String,Integer>();
+        for(String i : price.keySet())
         {
-            rate[i] = price[i];
+            rate.put(i,price.get(i));
         }
         // Give values to all data fields.
     }
     public double getRate(LocalDate date, int num)
     {
         // Gets rate of stay from checkin date, number of days stayed.
-        double d = 0;
-        int day = date.getDayOfMonth();
-        int i = 0;
-        while(i < num)
+        double total = 0;
+        String x = "" + date.getDayOfWeek();
+        for(String s : rate.keySet())//iterates through keys ie. days of week
         {
-            if(day%7 == 0)
-                d = d + rate[day/7];
-            else
-                d = d + rate[day%7];
-            i++;
+            if(s.equalsIgnoreCase(x))//finds the day of the week
+            {
+                for(int i=0;i<num;i++)//
+                {
+                    total = total + rate.get(s+i);
+                }     
+                break;
+            }
         }
-        return d;// Compute date from double[] rate.
+        return total;// Compute date from double[] rate.
     }
     public ArrayList<Room> getRooms()
     {
