@@ -23,6 +23,10 @@ public class Room
     {
         return breakfast;
     }
+    public RoomType getType()
+    {
+        return type;
+    }
     public String setRoomID(String typeID, int roomNumber)
     {
         if(roomNumber<10)
