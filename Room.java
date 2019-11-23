@@ -2,7 +2,6 @@ import java.util.*;
 public class Room
 {
     private String roomID; 
-    private boolean breakfast;
     private boolean status;
     private RoomType type;
     private ArrayList<Reservation> detail;
@@ -20,10 +19,6 @@ public class Room
     public boolean getStatus()
     {
         return status;
-    }
-    public boolean getBreakfast()
-    {
-        return breakfast;
     }
     public RoomType getType()
     {
@@ -51,10 +46,5 @@ public class Room
     public void setStatus(boolean flag)
     {
         status = flag;
-    }
-    public void setBreakfast(boolean flag)
-    {
-        breakfast = flag;
-    }
-    
+    }    
 }
