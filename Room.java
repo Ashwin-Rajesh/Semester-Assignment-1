@@ -56,5 +56,11 @@ public class Room
     {
         breakfast = flag;
     }
-    
+    public boolean isAvailableOn(LocalDate dt, int period)
+    {
+        for(Reservation r : details)
+            if(!r.isAvailableOn(dt,period))
+                return 0;
+        return 1;
+    }    
 }
