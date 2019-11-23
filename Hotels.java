@@ -25,10 +25,6 @@ public class Hotels
     {
         return listOfTypes;
     }
-    public ArrayList<Room> getListOfRooms()
-    {
-        return listOfRooms;
-    }
     public ArrayList<Room> getListOfRoomsOfType(String type)
     {
         ArrayList<Room> temp = new ArrayList<Room>();
@@ -40,15 +36,6 @@ public class Hotels
             }
         }
         return temp;
-    }
-    public Room getRoomOfID(String roomId)
-    {
-        for(Room r : listOfRooms)
-        {
-            if(roomId.equalsIgnoreCase(r.getRoomID()))
-                return r;
-        }
-        return null;
     }
     public void book(String roomId)
     {
