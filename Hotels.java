@@ -43,11 +43,11 @@ public class Hotels
         }
         return temp;
     }
-    public Room getRoomOfID(String ID)
+    public Room getRoomOfID(String roomId)
     {
         for(Room r : listOfRooms)
         {
-            if(r.getRoomID() == ID)
+            if(roomId.equalsIgnoreCase(r.getRoomID()))
                 return r;
         }
         return null;
