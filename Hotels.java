@@ -16,7 +16,7 @@ public class Hotels
         listOfTypes = types;
         for(RoomType r : types)
         {
-            ArrayList<Room> rooms = r.getRooms();
+            ArrayList<Room> rooms = r.setRooms();
             for(Room rm : rooms)
             {
                 listOfRooms.add(rm);
