@@ -30,5 +30,12 @@ public class Reservation
     {
         return totalCost;
     }
-    
+    public boolean isAvailableOn(LocalDate beg, int period)
+    {
+        LocalDate end = beg.plusDays(period);
+        LocalDate enddate = date.plusDays(numberOfNights);
+        if(end.compareTo(enddate) > 0 && beg.compareTo(begdate) < 0)
+            return 1;
+        return 0;
+    }    
 }
