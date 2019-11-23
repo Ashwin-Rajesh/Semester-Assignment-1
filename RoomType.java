@@ -46,7 +46,7 @@ public class RoomType
     {
         return rate;
     }
-    public ArrayList<Room> getRooms()
+    public ArrayList<Room> setRooms()
     {
         ArrayList<Room> temp = new ArrayList<Room>(numberOfRooms);
         for(int i=1;i<=numberOfRooms;i++)
