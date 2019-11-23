@@ -31,6 +31,18 @@ public class Hotels
     {
         return listOfRooms;
     }
+    public ArrayList<Room> getListOfRoomsOfType(String type)
+    {
+        ArrayList<Room> temp = new ArrayList<Room>();
+        for(Room i : listOfRooms)
+        {
+            if(type.equalsIgnoreCase(i.getRoomType()))
+            {
+                temp.add(i);
+            }
+        }
+        return temp;
+    }
     public void book(String roomId)
     {
         for(Room r1 : listOfRooms)
