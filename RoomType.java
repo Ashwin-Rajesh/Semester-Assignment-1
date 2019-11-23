@@ -7,22 +7,22 @@ public class RoomType
     private String typeID;
     private int numberOfRooms;          // Total number of rooms of this type in hotel
     private int availableRooms;         // Number of available rooms of the type in the hotel
-    private int[] minOccupancy;
-    private int[] maxOccupancy;
-    private double[] rate;             //start of the week : monday
-    public RoomType(String roomType, int numberOfRooms, int[] minOccupancy, int[] maxOccupancy, double[] rate)
+    private int[] minOccupancy = new int[2];
+    private int[] maxOccupancy = new int[2];
+    private double[] rate = new double[7];             //start of the week : monday
+    public RoomType(String roomType, int numberOfRooms, int[] minOccupancy, int[] maxOccupancy, double[] price)
     {   
         this.roomType = roomType;
         this.numberOfRooms = numberOfRooms;
         availableRooms = numberOfRooms;
-        for(int i=0;i<rate.length;i++)
+        for(int i=0;i<price.length;i++)
         {
             if(i<2)
             {
                 this.minOccupancy[i] = minOccupancy[i];
                 this.maxOccupancy[i] = maxOccupancy[i];
             }
-            this.rate[i] = rate[i];
+            rate[i] = price[i];
         }
         // Give values to all data fields.
     }
