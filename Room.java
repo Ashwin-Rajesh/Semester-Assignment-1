@@ -1,8 +1,8 @@
 import java.util.*;
+import java.time.LocalDate;
 public class Room
 {
-    private String roomID; 
-    private boolean breakfast;
+    private String roomID;
     private boolean status;
     private RoomType type;
     private ArrayList<Reservation> detail;
@@ -21,10 +21,7 @@ public class Room
     {
         return status;
     }
-    public boolean getBreakfast()
-    {
-        return breakfast;
-    }
+    
     public RoomType getType()
     {
         return type;
@@ -52,9 +49,15 @@ public class Room
     {
         status = flag;
     }
-    public void setBreakfast(boolean flag)
+    public boolean isAvailableOn(LocalDate dt, int period)
     {
-        breakfast = flag;
+        for(Reservation r : detail)
+        {
+            if(!r.isAvailableOn(dt,period))
+            {
+                return false;
+            }
+        }
+        return true;
     }
-    
 }
