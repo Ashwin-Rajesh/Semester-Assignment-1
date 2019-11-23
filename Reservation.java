@@ -35,7 +35,7 @@ public class Reservation
         LocalDate end = beg.plusDays(period);
         LocalDate enddate = date.plusDays(numberOfNights);
         if(end.compareTo(enddate) > 0 && beg.compareTo(begdate) < 0)
-            return 1;
-        return 0;
+            return 0;
+        return 1;
     }    
 }
