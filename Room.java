@@ -5,10 +5,12 @@ public class Room
     private boolean breakfast;
     private boolean status;
     private RoomType type;
+    private ArrayList<Reservation> detail;
     public Room(RoomType rt, String typeID, int roomNumber)
     {
         status = true;
         this.type = rt;
+        detail = new ArrayList<Reservation>();
         setRoomID(typeID, roomNumber);
     }
     public String getRoomID()
