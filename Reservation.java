@@ -9,9 +9,9 @@ public class Reservation
     private int numberOfNights;
     private String reservationName;
     private ArrayList<String> roomID;
-    private String reservationType;
+    private boolean reservationType;
     private LocalDate date;
-    private LocalDate advancedDate;
+    private boolean breakfast;
     private float totalCost;
     private float deposit;
     public Reservation()
@@ -30,5 +30,14 @@ public class Reservation
     {
         return totalCost;
     }
-    
+    public boolean isAvailableOn(LocalDate beg, int period)
+    {
+        LocalDate end = beg.plusDays(period);
+        LocalDate enddate = date.plusDays(numberOfNights);
+        if(end.compareTo(enddate) > 0 && beg.compareTo(date) < 0)
+        {
+            return true;
+        }
+        return false;
+    }
 }
