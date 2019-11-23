@@ -3,8 +3,9 @@ import java.time.LocalDate;
 public class Hotels
 {
     String hotelName;
-    private ArrayList<Room> listOfRooms;//list of rooms
-    private ArrayList<RoomType> listOfTypes;//array of objects of RoomType
+    private ArrayList<Room> listOfRooms;        //list of rooms
+    private ArrayList<RoomType> listOfTypes;    //array of objects of RoomType
+    private ArrayList<Reservation> listOfReservations;
     /* you will need  to go through the array of room lists */
     /* get rates */
     public Hotels(ArrayList<RoomType> types, String hotelName)
@@ -37,14 +38,33 @@ public class Hotels
         }
         return temp;
     }
-    public void book(String roomId)
+    public Room getRoomOfID(String roomID)
     {
-        for(Room r1 : listOfRooms)
+        for(Room r : listOfRooms)
+            if(roomID.equals(r.getRoomID()))
+                return r;
+        return null;
+    }    
+    public void book(Arraylist<String> roomIDs, boolean reservType, boolean breakfast, LocalDate date, int period)
+    {
+        double cost = 0;
+        for(String s : roomIDs)                 // Checking if all rooms are available and simultaneously finding cost
         {
-            if(roomId == r1.getRoomID())
+            Room r = getRoomOfID(roomID);
+            if(!r.isAvailableOn(date,period))
             {
-                r1.setStatus(false);
+                System.out.println(" The room of id " + s + " is not available on given date.");
+                return;
             }
+            cost += r.getType().returnRate(date,period);
+        }
+        if(reservType)  cost = cost / 20;       // ReservType is true for Advanced Booking
+        Reservation res = new Reservation();    // Pass all generated values to constructor once implemented.
+        
+        for(String s : roomIDs)                 // Goes and updates all rooms to be reserved
+        {
+            Room r = getRoomOfID(roomID);
+            r.book(res);
         }
     }   
 }
