@@ -3,80 +3,34 @@ import java.time.LocalDate;
 import java.lang.String;
 public class Reservation
 {
-    
     /* Constructor, remove booking, type of booking, hotel type, room type, 
-    num of nights, num of rooms, total cost, deposit, dates, occupancy min/max,
-    rates, breakfast*/
-    private ArrayList<Room> bookedRooms;
-    private int resNumber;
+    num of nights, num of rooms, total cost, deposit, dates, */
+    private int reservationNumber;
     private int numberOfNights;
-    private String resName;
-    private String roomType;
+    private String reservationName;
+    private ArrayList<String> roomID;
     private String reservationType;
-    private boolean breakfast;
     private LocalDate date;
     private float totalCost;
     private float deposit;
-    private int strength;
-    private ArrayList<Reservation> details;
     public Reservation()
     {
-        details = new ArrayList<Reservation>();
-        bookedRooms = new ArrayList<Room>();
+        roomID = new ArrayList<String>();
     }
-    
-    public void setReservName(int reservNumber, String reservName)//func to ask the user to set a name to refer
-    {
-        for(Reservation i : details)
-        {
-            if(reservNumber == i.getReservNumber())
-            {
-                resName = reservName;
-            }
-        }
-    }
-    
     public void setDate()//func that sets date
     {
         date = LocalDate.now();
     }
-    
-    public void setNumberOfNights(int reservNumber, String reservName)//func to ask the user for how long
-    {
-        
-    }
-    
-    public void setTotalCost(int reservNumber, String reservName)//you know the date, you know the nights
-    {
-       //calculation
-    }
-    
-    public int getReservNumber()//func to get the number to refer
-    {
-        return resNumber;
-    }
-    
-    public String getReservName()//func to get name of the customer
-    {
-        return resName;
-    }
-    
-    public String getRoomType()//I think we need something common in the class Room and Reservation
-    {
-        return roomType;//let that be room type
-    }
-    
     public int getNights()
     {
         return numberOfNights;
     }
-    
     public float getTotalCost()
     {
         return totalCost;
     }
     
-    @Override
+    /*@Override
     public String toString(Reservation r1)//prints everyting as a string
     {
         String s="Reservation Name: "+r1.getReservName()
@@ -113,8 +67,8 @@ public class Reservation
             if(roomTyp.equals(roomType) && roomNum == roomNumber)//checks for the same room number and room type
             {
                 bookedRooms.add(i);//adds the object to the list of booked rooms
-                count = i.getAvailRooms(roomType) - 1;//function which gets number of rooms available at the moment of a specific type
-                i.setAvailRooms(roomType, count);//same here
+                count = i.getAvailable() - 1;//function which gets number of rooms available at the moment of a specific type
+                i.setAvailable(count);//same here
                 flag = true;
             }
             if(flag == false)
@@ -144,5 +98,5 @@ public class Reservation
         }
         if(flag == false)
             System.out.println("Room is not occupied!!");
-    }
+    }*/
 }
