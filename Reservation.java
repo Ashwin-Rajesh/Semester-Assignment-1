@@ -9,7 +9,7 @@ public class Reservation
     private int numberOfNights;
     private String reservationName;
     private ArrayList<String> roomID;
-    private String reservationType;
+    private boolean reservationType;
     private LocalDate date;
     private float totalCost;
     private float deposit;
