@@ -26,20 +26,25 @@ public class RoomType
         }
         // Give values to all data fields.
     }
-    public double getRate(LocalDate date, int num)
+    public double returnRate(LocalDate date, int num)
     {
         // Gets rate of stay from checkin date, number of days stayed.
         double total = 0;
         int index = date.getDayOfWeek().getValue()-1;
-        for(int j=index;j<rate.length;j++)
+        for(int j=0;j<num;j++)
         {
-            total = total + rate[j];
-            if(index==6)
+            total = total + rate[index];
+            index++;
+            if(index==7)
             {
                 index=0;
             }
         }     
         return total;// Compute date from double[] rate.
+    }
+    public double[] getRate()
+    {
+        return rate;
     }
     public ArrayList<Room> getRooms()
     {
