@@ -22,6 +22,10 @@ public class Hotels
             }
         }
     }
+    public String getHotelName()
+    {
+        return hotelName;
+    }
     public ArrayList<RoomType> getListOfTypes()
     {
         return listOfTypes;
@@ -31,7 +35,7 @@ public class Hotels
         ArrayList<Room> temp = new ArrayList<Room>();
         for(Room i : listOfRooms)
         {
-            if(type.equalsIgnoreCase(i.getRoomType()))
+            if(type.equalsIgnoreCase(i.getType().getRoomType()))
             {
                 temp.add(i);
             }
@@ -41,30 +45,51 @@ public class Hotels
     public Room getRoomOfID(String roomID)
     {
         for(Room r : listOfRooms)
+        {
             if(roomID.equals(r.getRoomID()))
+            {
                 return r;
+            }   
+        }
         return null;
     }    
-    public void book(Arraylist<String> roomIDs, boolean reservType, boolean breakfast, LocalDate date, int period)
+    public void reserve(ArrayList<String> roomID, boolean reservType, boolean breakfast, LocalDate date, int numberOfNights)
     {
         double cost = 0;
-        for(String s : roomIDs)                 // Checking if all rooms are available and simultaneously finding cost
+        boolean flag = true;
+        for(String s : roomID)                 // Checking if all rooms are available and simultaneously finding cost
         {
-            Room r = getRoomOfID(roomID);
-            if(!r.isAvailableOn(date,period))
+            Room r = getRoomOfID(s);
+            if(!r.isAvailableOn(date,numberOfNights))
             {
                 System.out.println(" The room of id " + s + " is not available on given date.");
+                flag = false;
                 return;
             }
-            cost += r.getType().returnRate(date,period);
+            cost += r.getType().returnRate(date,numberOfNights);
         }
-        if(reservType)  cost = cost / 20;       // ReservType is true for Advanced Booking
-        Reservation res = new Reservation();    // Pass all generated values to constructor once implemented.
-        
-        for(String s : roomIDs)                 // Goes and updates all rooms to be reserved
+        if(reservType)  
         {
-            Room r = getRoomOfID(roomID);
-            r.book(res);
+            cost = cost / 20;       // ReservType is true for Advanced Booking
+        }
+        if(flag)
+        {
+            Reservation res = new Reservation();    // Pass all generated values to constructor once implemented.
+            for(String s : roomID)                 // Goes and updates all rooms to be reserved
+            {
+                Room r = getRoomOfID(s);
+                listOfReservations.add(res);
+            }   
         }
     }   
+    public void cancel(int resID)
+    {
+        for(Reservation r : listOfReservations)
+        {
+            if(r.getReservationID() == resID)
+            {
+                listOfReservations.remove(r);
+            }
+        }
+    }  
 }
