@@ -27,6 +27,10 @@ public class Room
     {
         return type;
     }
+    public String getRoomType()
+    {
+        return type.getRoomType();
+    }
     public void setRoomID(String typeID, int roomNumber)
     {
         if(roomNumber<10)
@@ -50,4 +54,5 @@ public class Room
     {
         breakfast = flag;
     }
+    
 }
