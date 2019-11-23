@@ -5,13 +5,12 @@ public class Reservation
 {
     /* Constructor, remove booking, type of booking, hotel type, room type, 
     num of nights, num of rooms, total cost, deposit, dates, */
-    private int reservationNumber;
+    private int reservationID;
     private int numberOfNights;
     private String reservationName;
     private ArrayList<String> roomID;
     private boolean reservationType;
     private LocalDate date;
-    private boolean breakfast;
     private float totalCost;
     private float deposit;
     public Reservation()
@@ -29,6 +28,10 @@ public class Reservation
     public float getTotalCost()
     {
         return totalCost;
+    }
+    public int getReservationID()
+    {
+        return reservationID;
     }
     public boolean isAvailableOn(LocalDate beg, int period)
     {
