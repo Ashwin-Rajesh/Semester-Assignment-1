@@ -43,6 +43,15 @@ public class Hotels
         }
         return temp;
     }
+    public Room getRoomOfID(String ID)
+    {
+        for(Room r : listOfRooms)
+        {
+            if(r.getRoomID() == ID)
+                return r;
+        }
+        return null;
+    }
     public void book(String roomId)
     {
         for(Room r1 : listOfRooms)
