@@ -60,4 +60,16 @@ public class Room
         }
         return true;
     }
+    public void book(Reservation res)
+    {
+        detail.add(res);
+    }
+    public void cancel(int resnum)
+    {
+        for(Reservation r : detail)
+        {
+            if(r.getresID() == resnum)
+                details.remove(r);
+        }
+    }    
 }
