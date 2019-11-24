@@ -43,4 +43,8 @@ public class Reservation
         }
         return false;
     }
+    public ArrayList<String> getRoomIDs()
+    {
+        return roomID;
+    }
 }
